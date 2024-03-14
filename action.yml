@@ -1,0 +1,32 @@
+name: 'git-retest-checkup-action'
+description: 'This action checks whether a retest is needed after Pull request merged into base branch.'
+author: Zvi Grinberg
+
+inputs:
+  base-ref:  # id of input
+    description: 'base ref commit branch, tag or sha digest, usually the upstream main branch'
+    required: true
+    default: 'HEAD'
+  pr-ref:  # id of input
+    description: 'head ref commit branch, tag or sha digest, usually a PR head branch'
+    required: true
+    default: 'HEAD'
+
+outputs:
+  retest-is-needed:
+    description: "Returns true if retest is needed, otherwise, returns false"
+    value: ${{ steps.check-if-retest-needed.outputs.result }}
+runs:
+  using: "composite"
+  steps:
+
+    - name: Check if retest is needed
+      id: check-if-retest-needed
+      run: is-retest-needed.sh
+      shell: bash
+      env:
+        BASE_BRANCH: ${{ inputs.base-ref }}
+        HEAD_BRANCH: ${{ inputs.head-ref }}
+
+
+
