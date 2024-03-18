@@ -30,6 +30,7 @@ runs:
         HEAD_BRANCH: ${{ inputs.head-ref }}
         GITHUB_ACTION_PATH: ${{ github.action_path }}
         GITHUB_PATH: ${{ github.action_path }}
+        GITHUB_REPOSITORY: ${{ github.workspace }}
 
 
 
