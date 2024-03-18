@@ -22,11 +22,14 @@ runs:
 
     - name: Check if retest is needed
       id: check-if-retest-needed
+      working-directory: ${{ github.action_path }}
       run: ./is-retest-needed.sh
       shell: bash
       env:
         BASE_BRANCH: ${{ inputs.base-ref }}
         HEAD_BRANCH: ${{ inputs.head-ref }}
+        GITHUB_ACTION_PATH: ${{ github.action_path }}
+        GITHUB_PATH: ${{ github.action_path }}
 
 
 
