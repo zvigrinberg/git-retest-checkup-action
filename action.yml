@@ -26,7 +26,7 @@ runs:
       shell: bash
       env:
         BASE_BRANCH: ${{ inputs.base-ref }}
-        HEAD_BRANCH: ${{ inputs.head-ref }}
+        HEAD_BRANCH: ${{ inputs.pr-ref }}
         GITHUB_ACTION_PATH: ${{ github.action_path }}
         GITHUB_REPOSITORY: ${{ github.workspace }}
 
