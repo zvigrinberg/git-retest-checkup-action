@@ -22,7 +22,7 @@ runs:
 
     - name: Check if retest is needed
       id: check-if-retest-needed
-      run: is-retest-needed.sh
+      run: ./is-retest-needed.sh
       shell: bash
       env:
         BASE_BRANCH: ${{ inputs.base-ref }}
