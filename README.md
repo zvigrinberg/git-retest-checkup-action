@@ -2,14 +2,30 @@
 
 This is a Github Action that checks if re-test of application in a workflow is needed.
 
-## Idea
+## Background
 
-The Idea behind this action is to check if PR' tests before merge need additional tests, that is, if combining the code and tests Of the head branch ( source branch) together with base branch tests and code that are not present at head branch, then after the merge from head to base branch, it's possible that one of the tests might break, thus re-test of everything is needed before merging or before staging/releasing.
+The Idea behind this action is to check if PR' tests before merge or deployment needs additional tests, that is, if combining the code and tests Of the head branch ( source branch) together with base branch tests and code that are not present at head branch, then after the merge from head to base branch, it's possible that one of the tests might break, thus re-test of everything is needed before merging or before staging/releasing.
 
 
 ## Usage
 
-Two use cases: 
+<!-- start usage -->
+```yaml
+- name: Check if re-test is needed
+  uses: zvigrinberg/git-retest-checkup-action@v1
+  with:
+     # The base branch of the PR Event
+    base-ref: ''
+     # The head or source branch of the PR Event
+    pr-ref: ' '
+```
+<!-- end usage -->
+
+## Scenarios
+
+
+Two use cases:
+
 1. When Opening A PR and testing head branch (PR branch) , then use this action to check if 
    it required to re-test with additional content from base branch ( if exists), this happens when the head branch is forked from the base branch, and before merged back to base branch, another branch merged into base.
    whenever it happens, it's desirable to know if you need to re-test with additional content from base branch, before allowing merging head branch.
