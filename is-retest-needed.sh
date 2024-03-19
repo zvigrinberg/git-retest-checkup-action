@@ -7,6 +7,7 @@ echo "BASE_BRANCH=$BASE_BRANCH"
 CHECKED_OUT_REF=$(git rev-parse  --abbrev-ref HEAD)
 # Save original checked out branch name
 HEAD_BRANCH_REMOTE=$(git branch -av | grep $HEAD_BRANCH -m 1| awk '{print $1}')
+echo "HEAD_BRANCH_REMOTE=$HEAD_BRANCH_REMOTE"
 git checkout $HEAD_BRANCH_REMOTE
 git branch $HEAD_BRANCH
 git request-pull "$HEAD_BRANCH" ./ "$BASE_BRANCH"
