@@ -4,7 +4,7 @@ echo "current directory:"
 echo $(pwd)
 echo "HEAD_BRANCH=$HEAD_BRANCH"
 echo "BASE_BRANCH=$BASE_BRANCH"
-HEAD_BRANCH_REMOTE = $(git branch -av | grep $HEAD_BRANCH | awk '{print $1}')
+HEAD_BRANCH_REMOTE=$(git branch -av | grep $HEAD_BRANCH | awk '{print $1}')
 git checkout $HEAD_BRANCH_REMOTE -b $HEAD_BRANCH
 git request-pull "$HEAD_BRANCH" ./ "$BASE_BRANCH"
 HEAD_REF=$(git request-pull -p "$HEAD_BRANCH" ./ "$BASE_BRANCH" | grep "The following changes since commit" | awk '{print $6}' | awk -F : '{print $1}')
