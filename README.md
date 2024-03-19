@@ -21,6 +21,22 @@ The Idea behind this action is to check if PR' tests before merge or deployment 
 ```
 <!-- end usage -->
 
+## Inputs
+
+| Key        | Description                                                            | Default value             |
+|------------|------------------------------------------------------------------------|---------------------------|
+| `base-ref` | Base ref commit branch, tag or sha digest, usually the upstream branch | `HEAD`                    |
+| `pr-ref`   | Head ref commit branch, tag or sha digest, usually a PR head branch    | `HEAD`                    |
+
+
+## Outputs
+
+| Key                    | Description                                                   | Example |
+|------------------------|---------------------------------------------------------------|---------|
+| `retest-is-needed`     | Returns true if re-test is needed, otherwise, returns false   | `true`  |
+
+
+
 ## Scenarios
 
 
