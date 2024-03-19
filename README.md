@@ -35,6 +35,8 @@ jobs:
          # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
          - name: Checkout git Repo
            uses: actions/checkout@v4
+           with:
+             fetch-depth: 0
 
          - name: Setup Java 17
            uses: actions/setup-java@v3
