@@ -23,10 +23,11 @@ The Idea behind this action is to check if PR' tests before merge or deployment 
 
 ## Inputs
 
-| Key        | Description                                                            | Default value             |
-|------------|------------------------------------------------------------------------|---------------------------|
-| `base-ref` | Base ref commit branch, tag or sha digest, usually the upstream branch | `HEAD`                    |
-| `pr-ref`   | Head ref commit branch, tag or sha digest, usually a PR head branch    | `HEAD`                    |
+| Key                   | Description                                                                                                                        | Default value  |
+|-----------------------|------------------------------------------------------------------------------------------------------------------------------------|----------------|
+| `base-ref`            | Base ref commit branch, tag or sha digest, usually the upstream branch                                                             | `HEAD`         |
+| `pr-ref`              | Head ref commit branch, tag or sha digest, usually a PR head branch                                                                | `HEAD`         |
+| `file-pattern-regex`  | String Regex pattern to trigger testing ( return true result for re-testing) only if one of the changed files matches that pattern | `HEAD`         |
 
 
 ## Outputs
@@ -142,6 +143,8 @@ jobs:
         with:
           base-ref: ${{ github.base_ref }}
           pr-ref: ${{ github.head_ref }}
+          # only trigger retesting if any file in src directory of repo was changed. 
+          file-pattern-regex: "^src/.*"
 
 
       - name: Install Java

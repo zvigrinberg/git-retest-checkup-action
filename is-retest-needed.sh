@@ -19,7 +19,10 @@ echo "BASE_REF= $BASE_REF"
 # check out back to original branch name
 git checkout $CHECKED_OUT_REF
 if [[ "${HEAD_REF}" == "${BASE_REF}" ]]; then
-      echo "result=false" >> "$GITHUB_OUTPUT"
+      echo "INTERMEDIATE_RESULT=false" >> "$GITHUB_OUTPUT"
+      echo "CHANGED_FILES= " >> "$GITHUB_OUTPUT"
   else
-    echo "result=true" >> "$GITHUB_OUTPUT"
+    echo "INTERMEDIATE_RESULT=true" >> "$GITHUB_OUTPUT"
+     CHANGED_FILES=$(git diff "$HEAD_BRANCH" "$BASE_BRANCH" --name-only | base64 -w0)
+     echo "CHANGED_FILES=${CHANGED_FILES}" >> "$GITHUB_OUTPUT"
 fi
