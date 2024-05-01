@@ -39,12 +39,13 @@ runs:
           GITHUB_REPOSITORY: ${{ github.workspace }}
 
       - name: Check if changed files
-        if:
         id: check-if-retest-needed-final
         run: python $GITHUB_ACTION_PATH/check_changed_files.py
         shell: bash
         env:
           FILE_PATTERN_REGEX: ${{ inputs.file-pattern-regex }}
+          INTERMEDIATE_RESULT: ${{ steps.check-if-retest-needed.outputs.intermediate-result }}
+          CHANGED_FILES: ${{ steps.check-if-retest-needed.outputs.changed-files }}
           GITHUB_ACTION_PATH: ${{ github.action_path }}
           GITHUB_REPOSITORY: ${{ github.workspace }}
 
