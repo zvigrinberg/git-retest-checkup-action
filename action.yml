@@ -20,6 +20,10 @@ outputs:
   retest-is-needed:
     description: "Returns true if retest is needed, otherwise, returns false"
     value: ${{ steps.check-if-retest-needed-final.outputs.result }}
+  triggering-file:
+    description: "If retest-is-needed= true and there was a pattern input supplied , return in this field the triggering file name which its change caused the re-test"
+    value: ${{ steps.check-if-retest-needed-final.outputs.triggering-file }}
+
 runs:
   using: "composite"
   steps:

@@ -32,9 +32,10 @@ The Idea behind this action is to check if PR' tests before merge or deployment 
 
 ## Outputs
 
-| Key                    | Description                                                   | Example |
-|------------------------|---------------------------------------------------------------|---------|
-| `retest-is-needed`     | Returns true if re-test is needed, otherwise, returns false   | `true`  |
+| Key                | Description                                                                                                              | Example             |
+|--------------------|--------------------------------------------------------------------------------------------------------------------------|---------------------|
+| `retest-is-needed` | Returns true if re-test is needed, otherwise, returns false                                                              | `true`              |
+| `triggering-file`  | If retest is needed, and there was a pattern, in this field the triggering file name which its change caused for re-test | `src/some-file.js`  |
 
 
 
